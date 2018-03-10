@@ -1,6 +1,6 @@
 Name:		cava
 Version:	0.6.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Console-based Audio Visualizer for Alsa
 
 License:	MIT
@@ -23,14 +23,15 @@ C.A.V.A. is a bar spectrum analyzer for audio using ALSA for input.
 
 %build
 %configure
-make %{?_smp_mflags}
+make %{?_smp_mflags} cava_LDFLAGS=
 
 
 %install
 %make_install
 rm -f %{buildroot}%{_libdir}/libiniparser.{a,la,so}
 
-
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root)
@@ -42,5 +43,8 @@ rm -f %{buildroot}%{_libdir}/libiniparser.{a,la,so}
 /usr/share/consolefonts/cava.psf
 
 %changelog
+* Sat Mar 10 2018 Lars Kellogg-Stedman <lars@oddbit.com> - 0.6.0-3
+- rpmlint fixes
+
 * Fri Mar 09 2018 Lars Kellogg-Stedman <lars@oddbit.com> - 0.6.0-2
 - initial package
