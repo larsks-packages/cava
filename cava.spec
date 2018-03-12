@@ -1,6 +1,6 @@
 Name:		cava
 Version:	0.6.0
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Console-based Audio Visualizer for Alsa
 
 License:	MIT
@@ -40,8 +40,11 @@ rm -f %{buildroot}%{_libdir}/libiniparser.{a,la,so}
 %{_datadir}/consolefonts
 
 %changelog
+* Mon Mar 12 2018 Lars Kellogg-Stedman <lars@oddbit.com> - 0.6.0-6
+- fixes from review (rhbz#1553999): remove defattr
+
 * Sat Mar 10 2018 Lars Kellogg-Stedman <lars@oddbit.com> - 0.6.0-5
-- fixes from review (rhbz#1553999)
+- fixes from review (rhbz#1553999): remove bundled iniparser
 
 * Sat Mar 10 2018 Lars Kellogg-Stedman <lars@oddbit.com> - 0.6.0-3
 - rpmlint fixes
